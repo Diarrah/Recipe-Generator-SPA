@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import { RecipeContext } from './recipeContext';
+import * as slide from './slides';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Keyboard } from 'swiper';
+
+import './App.scss';
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+
+SwiperCore.use([Pagination, Keyboard]);
 
 function App() {
+    const { mainSwiper, setMainSwiper, error } = useContext(RecipeContext);
+
+    if (error.error) mainSwiper.removeSlide([2, 10])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Swiper
+            onInit={(swiper) => setMainSwiper(swiper)}
+            direction="vertical"
+            pagination={{ clickable: true }}
+            keyboard={{ enabled: false }}
+            simulateTouch={false}
+            allowTouchMove={false}
+            slidesPerView={1}
         >
-          Learn React
-        </a>
-      </header>
+            <SwiperSlide><slide.Welcome /></SwiperSlide>
+            <SwiperSlide><slide.Meal /></SwiperSlide>
+            <SwiperSlide><slide.Ingredients /></SwiperSlide>
+            <SwiperSlide><slide.Steps /></SwiperSlide>
+            <SwiperSlide><slide.Video /></SwiperSlide>
+            <SwiperSlide><slide.ThankYou /></SwiperSlide>
+        </Swiper>
     </div>
   );
 }
