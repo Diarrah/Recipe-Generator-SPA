@@ -1,0 +1,64 @@
+.swiper-container {
+    width: 100vw;
+
+    .swiper-wrapper {
+        height: 100vh !important;
+    }
+}
+
+.swiper-slide {
+    @include a-d-jc(center, flex, center);
+    height: 100%; width: 100%;
+    background-color: $background;
+
+    & > div {
+        height: 100%; width: 100%;
+    }
+}
+
+.swiper-container-vertical {
+    .swiper-pagination {
+        display: none;
+    }
+}
+
+.swiper-container-horizontal {
+    position: relative;
+
+        &::after {
+            content: '';
+            @include d-p(inline-block, absolute);
+            background-image: url(../../images/spice-spoons.png);
+            background-color: $background;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            height: 100%; width: 44%;
+            top: 1%; right: 0;
+            z-index: 2;
+
+            @media screen and (max-width: 800px) and (min-height: 900px) {
+                background-color: transparent;
+                background-position: left top;
+                width: 65%;
+                transform: translateX(20%) translateY(-10%);
+            }
+
+            @include rwd(700) { display: none }
+        }
+
+    .swiper-pagination {
+        display: block;
+    }
+}
+
+.swiper-pagination-bullet {
+    border: 1px solid $paprika;
+    background-color: transparent !important;
+    opacity: .5 !important;
+
+    &-active {
+        background-color: $paprika !important;
+        opacity: 1 !important;
+    }
+}
