@@ -1,0 +1,87 @@
+.ingredients {
+    @include a-d-jc-p(center, flex, center, relative);
+    flex-direction: column;
+    text-align: center;
+
+    &__heading {
+        position: relative;
+        text-transform: uppercase;
+        font-size: 1.6em;
+        letter-spacing: 5px;
+        z-index: 2;
+        margin: 50px 0;
+
+        @include rwd(460) {
+            font-size: 1.4em;
+            letter-spacing: 3px;
+            margin: 75px 0 25px;
+        }
+    }
+
+    &__list__box {
+        @include a-d-jc-p(center, flex, space-between, relative);
+        height: max-content !important; width: 80%;
+        overflow: auto;
+        z-index: 2;
+
+        ul {
+            flex: 0 0 50%;
+            list-style: none;
+            text-transform: lowercase;
+            &:nth-of-type(1) { border-right: 1px solid black }
+
+            li {
+                margin-bottom: 10px;
+
+                span {
+                    color: $bokchoy;
+                    font-weight: 700;
+                    font-size: 1.35em;
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+    
+    .bg-image {
+        position: absolute;
+
+        &--asparagus {
+            top: 0; left: 0;
+            max-height: 70%; max-width: 40%;
+            transform: rotateX(180deg);
+        }
+
+        &--bokchoy {
+            max-height: 100%;
+            right: 0;
+        }
+    }
+
+    @include rwd(767) {
+        &__list__box {
+            flex-direction: column;
+            margin-bottom: 50px;
+
+            ul:nth-of-type(1) { border-right: 0 }
+
+            &::-webkit-scrollbar {
+                width: 6px;
+
+                &-track {
+                    background-color: transparent;
+                }
+
+                &-thumb {
+                    background-color: rgba($button, .6);
+                    border-radius: 6px;
+                }
+            }
+        }
+
+        .bg-image {
+            &--asparagus { display: none }
+            &--bokchoy { transform: translateX(35%) }
+        }
+    }
+}

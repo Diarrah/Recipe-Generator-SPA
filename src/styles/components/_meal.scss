@@ -1,0 +1,179 @@
+.meal {
+    @include d-jc-p(flex, center, relative);
+    & > * { flex: 0 0 50% }
+
+    &__textbox {
+        @include d-jc-p(flex, center, relative);
+        flex-direction: column;
+        padding: 20px 100px;
+
+        .textbox {
+            &__heading {
+                text-transform: capitalize;
+                text-align: right;
+                font-size: calc(4em + 2vw);
+                line-height: 1.1;
+                color: $paprika;
+                transform: translateX(70px);
+                margin-bottom: 15px;
+
+                &.shrink {
+                    font-size: calc(2.25em + 2vw);
+                }
+            }
+
+            &__container {
+                text-align: right;
+
+                p:not(.textbox__container__tags) {
+                    font-size: .85em;
+                    line-height: 1.5;
+                    letter-spacing: .5px;
+                }
+
+                hr {
+                    border: 0;
+                    border-radius: 1px;
+                    height: 1px;
+                    background-color: $off-black;
+                    transform: translateX(70px);
+                    margin: 20px 0 10px;
+                }
+
+                &__tags {
+                    @include a-d-jc(center, flex, flex-end);
+                    
+                    .container__tag {
+                        font-family: 'Archivo Narrow', sans-serif;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        background-color: $paprika;
+                        color: $background;
+                        padding: 2px 10px;
+                        border-radius: 10px;
+                        margin: 0 0 2px 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__image__container {
+        display: flex;
+
+        img {
+            object-fit: cover;
+            width: 100%; max-width: 100%;
+            height: 100%; max-height: 100%;
+        }
+    }
+
+    .loading__spinner {
+        @include a-d-jc-p(center, flex, center, absolute);
+        align-self: center;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 65vh; height: 65vh;
+
+        img {
+            max-width: 100%; max-height: 100%;
+            animation: spin 2000ms infinite linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            } to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .error__msg {
+        position: absolute;
+        text-align: center;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        color: red;
+
+        img {
+            height: 25vh; width: 25vh;
+        }
+
+        &__textbox {
+            margin-top: 10px;
+
+            .textbox__code {
+                font-size: 7vw;
+            }
+        }
+    }
+
+    @include rwd(875) {
+        flex-direction: column-reverse;
+        padding-top: 20vh;
+
+        &__textbox {
+            justify-content: start;
+            padding: 40px;
+            height: 34vh ;
+
+            .textbox {
+                &__heading {
+                    text-align: center;
+                    transform: translateX(0);
+                    font-size: calc(2em + 1.5vw);
+
+                    &.shrink {
+                        font-size: calc(1.5em + 1.5vw);
+                    }
+                }
+
+                &__container {
+                    text-align: center;
+
+                    .container__inner {
+                        &--1 {
+                            display: flex;
+                            justify-content: center;
+
+                            p:nth-of-type(1) { margin-right: 40px }
+                        }
+
+                        &--2 {
+                            @include d-p(flex, absolute);
+                            flex-direction: column-reverse;
+                            flex-wrap: wrap;
+                            top: 0; left: 5vw;
+                            height: 10vh; width: 90%;
+                            transform: translateY(-650%);
+                        }
+                    }
+
+                    &__tags {
+                        flex-wrap: wrap;
+                        justify-content: center;
+                    }
+ 
+                    hr {
+                        position: absolute;
+                        bottom: -5px; margin: 0;
+                        width: 100%;
+                        transform: translateX(0);
+                        
+                    }
+                }
+            }
+        }
+
+        &__image__container {
+            height: 50vh;
+        }
+
+        .loading__spinner {
+            width: 45vh; height: 45vh;
+            max-width: 100vw; 
+        }
+    }
+}

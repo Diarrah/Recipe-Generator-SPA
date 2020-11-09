@@ -1,0 +1,22 @@
+.btn {
+    font-family: inherit;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: $button;
+    border: 1px solid $button;
+    color: white;
+    transition: .2s;
+    box-shadow: 1px 2px 2px rgba($button, .25);
+
+    &:active {
+        transform: scale(.985);
+        box-shadow: none;
+    }
+
+    &:hover {
+        color: $button;
+        background-color: #fff;
+    }
+}

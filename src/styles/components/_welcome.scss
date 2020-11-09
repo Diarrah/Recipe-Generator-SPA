@@ -1,0 +1,60 @@
+.welcome {
+    @include a-d-jc-p(center, flex, center, relative);
+    flex-direction: column;
+    text-align: center;
+
+
+    & > div:not(.background) {
+        position: relative;
+        z-index: 2;
+    }
+
+    .background {
+        @include d-p(flex, absolute);
+        background-image: url(../../images/brooke-lark-08bOYnH_r_E-unsplash.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 30%;
+        height: calc(100% + 15px);
+        width: calc(115% + 15px);
+        left: -15%;
+    }
+
+    &__loader {
+        display: none;
+
+        .loader__percentage {
+            font-size: calc(4em + 3vw);
+            font-weight: 700;
+            color: $paprika;
+        }
+        
+        &.visible {
+            display: block;
+
+            .loader__text {
+                animation: flash 1000ms linear infinite alternate;
+            }
+        }
+
+        @keyframes flash {
+            from {
+                opacity: .3;
+                letter-spacing: 1px;
+            } to {
+                opacity: 1;
+                letter-spacing: 1.5px;
+            }
+        }
+    }
+
+    &__textbox {
+        .textbox__heading {
+            margin-bottom: 10px;
+            font-size: calc(1.5em + 1vw);
+        }
+        &.hidden {
+            display: none;
+        }
+    }
+}
