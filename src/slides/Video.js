@@ -9,7 +9,7 @@ const Video = () => {
             <iframe 
                 className="video"
                 width="420" height="315"
-                src={videoLink && `http://www.youtube.com/embed/${videoLink.slice(-11)}`}>
+                src={videoLink && `https://www.youtube.com/embed/${videoLink.slice(-11)}`}>
 			</iframe>
         </div>
     )
