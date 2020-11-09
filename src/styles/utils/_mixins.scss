@@ -1,0 +1,35 @@
+@mixin rwd($screen) {
+    @media (max-width: $screen+'px') {
+        @content;
+    }
+}
+
+@mixin d-p($display, $position) {
+    display: $display;
+    position: $position;
+}
+
+@mixin d-jc-p($display, $justify, $position) {
+    display: $display;
+    justify-content: $justify;
+    position: $position;
+}
+
+@mixin a-d-p($align, $display, $position) {
+    align-items: $align;
+    display: $display;
+    position: $position;
+}
+
+@mixin a-d-jc($align, $display, $justify) {
+    align-items: $align;
+    display: $display;
+    justify-content: $justify;
+}
+
+@mixin a-d-jc-p($align, $display, $justify, $position) {
+    align-items: $align;
+    display: $display;
+    justify-content: $justify;
+    position: $position;
+}  
