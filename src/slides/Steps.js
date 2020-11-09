@@ -31,8 +31,8 @@ const Steps = () => {
                             <div class="textbox__step"> ${step} </div>
                         </div>   
                         <div class="video__preview${videoLink !== '' && i === 0 ? ' visible' : ''}">
-                            <img class="yt-logo" src=${yt} />
-                            <img class="arrow" src=${arrow} />
+                            <img class="yt-logo" src=${yt} alt="YouTube logo" />
+                            <img class="arrow" src=${arrow} alt="Downward arrow" />
                         </div>
                     </div>
                 </div>
